@@ -1,0 +1,64 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300&family=Ibarra+Real+Nova&family=Lato:wght@300;400&family=Roboto&family=Sora&family=Source+Sans+Pro:wght@300&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+    <script src="~/js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <title>Besmir Miftari portfolio</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="flex-column">
+
+
+            <div class="navigation">
+                <a href="#home" class="navigationLinks">Home</a>
+                <a href="#about" class="navigationLinks">About</a>
+                <a href="#tech" class="navigationLinks">Technologies</a>
+                <a href="#Comments" class="navigationLinks">Comments</a>
+                <a href="#contact" class="navigationLinks">Contact</a>
+            </div>
+
+            <div class="space" style="margin-top: 40px;"></div>
+
+
+            
+                @RenderBody()
+           
+            
+        </div>
+
+        <div class="footer">
+            <footer>&copy;Besmir Miftari,
+            Conatct me at:Besmirmiftari5@gmail.com</footer>
+        </div>
+
+       
+
+    </div>
+    
+</body>
+
+</html>
+
+
+
+
+
+

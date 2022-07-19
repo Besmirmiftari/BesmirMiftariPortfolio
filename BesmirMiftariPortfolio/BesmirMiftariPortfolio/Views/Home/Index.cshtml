@@ -1,0 +1,147 @@
+﻿
+<script src="~/js/site.js"></script>
+<link href="~/css/site.css" rel="stylesheet" />
+<h1 class="quote">
+    If it's not a 404 then
+    <span class="txt-rotate" data-period="2000"
+          data-rotate='[ "you did the right request.", "you are not lost.", "a response you shall get."]'></span>
+</h1>
+
+
+<div class=" row" id="about">
+
+    <div class=" column1">
+        <img src="~/images/IMG_20220712_180011_385.jpg" alt="There is a text here" style="height: 350px; width: 90%;">
+    </div>
+
+    <div class="intro-text column2">
+        <p>About Me</p>
+        <p>
+            Hello World! My name is Besmir Miftari and I am a software engineer.
+            I am looking forward to developing new exciting ideas, to challenge
+            myselft and self improve.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="space"></div>
+
+<div class="container" id="tech">
+    <h1>Technologies I have worked with</h1>
+    <p>These are some technologies that I have worked with for some time now.</p>
+    <div class="services">
+        <div class="service">
+            <i class="fa fa-globe"></i>
+            <div class="logo"><img src="~/images/htmlLogo.png" alt="" style="height:120px; width:120px; border-radius:20px"></div>
+            <h4 class="title">HTML</h4>
+
+        </div>
+        <div class="service">
+            <i class="fa fa-globe"></i>
+            <div class="logo"><img src="~/images/cssLogo.png" alt="" style="height:120px; width:120px; border-radius:20px"></div>
+            <h4 class="title">CSS</h4>
+
+        </div>
+
+        <div class="service">
+            <i class="fa fa-globe"></i>
+            <div class="logo"><img src="~/images/javascriptLogo.png" alt="" style="height:120px; width:120px; border-radius:20px"></div>
+            <h4 class="title">JavaScript</h4>
+
+        </div>
+
+        <div class="service">
+            <i class="fa fa-globe"></i>
+            <div class="logo"><img src="~/images/javaLogo.png" alt="" style="height:120px; width:120px; border-radius:20px"></div>
+            <h4 class="title">JAVA</h4>
+
+        </div>
+
+        <div class="service">
+            <i class="fa fa-globe"></i>
+            <div class="logo"><img src="~/images/phpLogo.png" alt="" style="height:120px; width:120px; border-radius:20px"></div>
+            <h4 class="title">PHP</h4>
+
+        </div>
+
+        <div class="service">
+            <i class="fa fa-globe"></i>
+            <div class="logo"><img src="~/images/cLogo.png" alt="" style="height:120px; width:120px; border-radius:20px"></div>
+            <h4 class="title">C#</h4>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="space"></div>
+
+<h1 class="centered" id="Comments">Comment section/API-Called</h1>
+
+<div class="centered">
+    <ul id="commentsList">
+    </ul>
+    <input type="text" id="name" placeholder="Name"/>
+    <input type="text" id="message" placeholder="Comment"/>
+    <button id="addComment">Add</button>
+</div>
+
+<hr />
+<div class="space"></div>
+
+<h1 class="centered" id="contact">Contact me</h1>
+
+
+<div class="formBackground centered">
+
+    <div class="contactForm">
+        <form action="">
+            <input type="text" placeholder="Subject">
+            <input type="text" placeholder="Email">
+            <br>
+            <textarea name="" i cols="30" rows="10" placeholder="Message..."></textarea>
+            <button>Send</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    $.getJSON("api/Comments", function (data) {
+        
+        $.each(data, function (key, val) {
+            $("#commentsList").append($("<li>").text(val.name + ":  " + val.message).addClass("ulList"));
+        });
+        console.log(data);
+        
+    });
+
+
+
+    $("#addComment").click(function (event) {
+        console.log("Trying to add new comment");
+        var user = {
+            name: $("#name").val(),
+            message: $("#message").val()
+        }
+
+        var json = JSON.stringify(user);
+
+        $.ajax({
+            type: "POST",
+            url: "api/Comments/add",
+            data: json,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+
+            }
+        });
+
+        $("#commentsList").append($("<li>").text(user.name + ":  " + user.message).addClass("ulList"));
+        $("#name").val("");
+        $("#message").val("");
+    });
+</script>
